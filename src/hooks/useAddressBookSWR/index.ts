@@ -32,7 +32,7 @@ import { ERROR_CODES, isHTTPError } from "../../models/errors";
 export const ERROR_USE_ADDRESS_BOOK_NO_POD_ROOT =
     "No pod root found for authenticated user";
 
-export default function useAddressBook() {
+export default function useAddressBookSWR() {
     const { fetch } = useSession();
     const { data: authenticatedProfile, error: authenticatedError } =
         useAuthenticatedProfile();

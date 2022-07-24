@@ -19,28 +19,32 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch} from "react-redux";
 import { useSession } from "../useSession";
 import useAuthenticatedProfile from "../useAuthenticatedProfile";
 import { getResource } from "../../models/helpers";
 import { ERROR_CODES, isHTTPError } from "../../models/errors";
-import useContactsContainerUrl from "../useContactsContainerUrl";
+import useContactsContainerUrls from "../useContactsContainerUrls";
 import {getContactsIndexIri, saveNewAddressBook} from "../../miniapps/contacts/addressBookHelpers";
 
-export default function useAddressBook() {
-    const [addressBook, setAddressBook] = useState(null);
-    const [error, setError] = useState(null);
-    const { session } = useSession();
+export default function useAddressBooks() {
+    // const [addressBooks, setAddressBooks] = useState(null);
+    // const [error, setError] = useState(null);
+    const dispatch = useDispatch();
+    // @ts-ignore
+    const addressBooks = useSelector((state) => state.addressBooks)
+    const { session, solidLogicSingleton } = useSession();
     const { data: profile } = useAuthenticatedProfile();
-    const addressBookContainerUrl = useContactsContainerUrl();
+    const addressBookContainerUrls = useContactsContainerUrls();
 
     useEffect(() => {
-        if (!session.info.isLoggedIn || !profile || !addressBookContainerUrl) {
+        if (!session.info.isLoggedIn || !profile || !addressBookContainerUrls) {
             return;
         }
         const { webId } = profile;
         const { fetch } = session;
-        const contactsIndexIri = getContactsIndexIri(addressBookContainerUrl);
+        const contactsIndexIri = getContactsIndexIri(addressBookContainerUrls);
 
         (async () => {
             // @ts-ignore
@@ -48,7 +52,7 @@ export default function useAddressBook() {
                 await getResource(contactsIndexIri, fetch);
 
             if (existingAddressBook) {
-                setAddressBook(existingAddressBook.dataset);
+               // setAddressBooks(existingAddressBook.dataset);
                 return;
             }
 
@@ -57,21 +61,21 @@ export default function useAddressBook() {
                 const { response: newAddressBook, error: newError } =
                     await saveNewAddressBook(
                         {
-                            iri: addressBookContainerUrl,
+                            iri: addressBookContainerUrls,
                             owner: webId,
                         },
                         fetch
                     );
                 if (newError) {
-                    setError(newError);
+                //    setError(newError);
                     return;
                 }
-                setAddressBook(newAddressBook.index);
+              //  setAddressBooks(newAddressBook.index);
                 return;
             }
-            setError(existingError);
+           // setError(existingError);
         })();
-    }, [session, profile, addressBookContainerUrl]);
-
-    return [addressBook, error];
+    }, [session, profile, addressBookContainerUrls]);
+// if I add error back in, need to add it here
+    return [addressBooks];
 }

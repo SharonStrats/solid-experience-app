@@ -1,10 +1,18 @@
 .container {
-  padding: 0 2rem;
-}
 
+}
+.unauthenticatedView {
+  padding: 30rem;
+}
 .main {
-  min-height: 100vh;
+  display: flex;
+  padding: 10rem 0;
+  flex: 1;
+  height: 90vh;
+}
+.main-test {
   padding: 4rem 0;
+  min-height: 100vh;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -43,17 +51,10 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  padding: 4rem;
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
+.title{
 }
 
 .code {

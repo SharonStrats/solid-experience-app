@@ -1,0 +1,119 @@
+Tasks can be a lot of things...
+Task - http://www.w3.org/2005/01/wf/flow#Task
+
+ActionItem - http://www.w3.org/2005/01/wf/flow#ActionItem
+- not sure what this owl:disjointUnionOf - rdf:first http://www.w3.org/2005/01/wf/flow#Open, rdf:first http://www.w3.org/2005/01/wf/flow#Closed and rdf:rest
+
+Perhaps I can use http://www.w3.org/2005/01/wf/flow#Change (not sure about this)
+the universal class of things which change the state of a task.
+Creation, Transition, Splitting, Merging..
+
+http://www.w3.org/2005/01/wf/flow#Creation
+A creation is a change from non-existence to existence of a task..
+Could be a date
+
+http://www.w3.org/2005/01/wf/flow#Message
+
+http://www.w3.org/2005/01/wf/flow#Open
+
+http://www.w3.org/2005/01/wf/flow#Product
+A product is a task which monitors something which must be produced
+
+http://www.w3.org/2005/01/wf/flow#Task
+Something to be done in a wide sense, an agenda item at a meeting is one example, but any issue, task, action
+item, goal, product, deliverable, milestone - whatever type make it a subclass of Task.
+
+http://www.w3.org/2005/01/wf/flow#Tracker -
+A set of issues and the constraints on how they evolve. To use this ontology, create a new tracker.
+Copy an existing one or make up your own.
+
+-- Think about the below because could transition for a timesheet be when it goes to the copy that pays it..
+http://www.w3.org/2005/01/wf/flow#allowedTransitions
+The state machine is defined by these lists of transition allowed for each issue. (An interesting option
+in the Web is to make an allowed transition to a state in soemone else's ontology,
+which in turn allows transitions into many ontologies. So a finite state maxchine may
+become very large. In practice this means that a task handed off to another organization
+may be processed on all kinds of ways.)
+
+Not sure about this one
+http://www.w3.org/2005/01/wf/flow#asigneeClass
+When an issue is assigned, the assignee must be from this class
+
+http://www.w3.org/2005/01/wf/flow#assignee
+
+http://www.w3.org/2005/01/wf/flow#attachment
+
+http://www.w3.org/2005/01/wf/flow#date
+http://www.w3.org/2005/01/wf/flow#dateDue
+
+
+http://www.w3.org/2005/01/wf/flow#deliverable
+Something which must be delivered to accomplish this
+
+http://www.w3.org/2005/01/wf/flow#dependent
+Another task upon which this depends, in the sense that this task cannot be completed without that
+task being done. You can't use this for dependencies on anything other than other tasks.
+(Note the US spelling of the URI. In the UK, a dependant is a something which is dependent on
+somehing else.)
+
+http://www.w3.org/2005/01/wf/flow#description
+The description, definition, or abstract. Information explaining what this is. Not arbitrary
+comment about anything, only about the subject. (Use this property for anything. There is
+no domain restriction.).
+
+http://www.w3.org/2005/01/wf/flow#goalDescription
+A textual description of the goals of this product, etc.
+
+http://www.w3.org/2005/01/wf/flow#issueCategory
+Issues may be categorized according to the subclasses of this class
+
+http://www.w3.org/2005/01/wf/flow#issueClass  see A below
+The class of issues which are allowed in this tracker. This is essemtial to the
+operation of the tracker, as it defines which states an issue can be in.
+(The issueClass must be a disjointUnionOf the state classes)
+
+http://www.w3.org/2005/01/wf/flow#message  subclass of attachment
+A message about this. Attached for information.
+
+http://www.w3.org/2005/01/wf/flow#modifiedBy
+
+http://www.w3.org/2005/01/wf/flow#recipent
+To be a valid transition, a necessary (but not necessarily sufficuent)
+condition is that there be recorded these properties for the record
+
+http://www.w3.org/2005/01/wf/flow#requires
+
+http://www.w3.org/2005/01/wf/flow#stateStore
+A read-write document. The state of the issues is modified here. When you set up a trcaker, thgis must be set to point to a writeble data resource on the web.
+
+http://www.w3.org/2005/01/wf/flow#subscriber
+
+http://www.w3.org/2005/01/wf/flow#successCriteria
+A textual description of the successs critera. How when we know this is done?
+
+http://www.w3.org/2005/01/wf/flow#task - this instead of Task?
+
+A
+<rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#issueClass">
+<comment>
+The class of issues which are allowed in this tracker. This is essemtial to the operation of the tracker, as it defines which states an issue can be in. (The issueClass must be a disjointUnionOf the state classes)
+</comment>
+<domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+<label>all issues must be in</label>
+<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+<range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+</rdf:Property>
+
+B - not sure about how to use this
+<rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#recipent">
+<domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Message"/>
+<label>to</label>
+<range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</rdf:Property>
+
+C - similar to B
+<rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#sender">
+<domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Message"/>
+<label>from</label>
+<range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</rdf:Property>

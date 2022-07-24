@@ -1,0 +1,9 @@
+.logoutButton {
+    background-color: #DB3A34;
+}
+
+.logoutButton:hover,
+.logoutButton:active {
+    background: #536252;
+    border-color: #741188;
+}

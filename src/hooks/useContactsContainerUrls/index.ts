@@ -24,8 +24,8 @@ import { useSession } from "../useSession";
 import useAuthenticatedProfile from "../useAuthenticatedProfile";
 import {contactsContainerIri} from "../../miniapps/contacts/addressBookHelpers";
 
-export default function useContactsContainerUrl() {
-    const [addressBookContainer, setAddressBookContainer] = useState(null);
+export default function useContactsContainerUrls() {
+    const [addressBookContainers, setAddressBookContainers] = useState(null);
     const { session } = useSession();
     const { data: profile } = useAuthenticatedProfile();
 
@@ -33,8 +33,8 @@ export default function useContactsContainerUrl() {
         if (!session.info.isLoggedIn || !profile) return;
         const { pods } = profile;
         // @ts-ignore
-        setAddressBookContainer(contactsContainerIri(pods[0]));
+        setAddressBookContainers(contactsContainerIri(pods[0]));
     }, [profile, session.info.isLoggedIn]);
 
-    return addressBookContainer;
+    return addressBookContainers;
 }

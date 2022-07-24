@@ -1,24 +1,23 @@
-import MiniApp from "../../components/MiniApp";
+import Container from '../UI/Container';
 
-const navItems = [
-    {
-        id: '1',
-        name: 'groups',
-        href: '/groups'
-    },
-    {
-        id: '2',
-        name: 'individual',
-        href: '/individual'
-    }
-]
+// Here we can also do settings and acl.. sharing..
+const navItems: never[] = []
 
-const TodayApp = () => {
-    return (
-        <MiniApp icon='checklist' name='Today' navItems={navItems} positionX={1000} positionY={700} >
-            <h2>Schedule your activities and todos</h2>
-        </MiniApp>
-    )
+// @ts-ignore
+const onDropHandler = (event) => {
+    alert('you dropped something on me')
+    console.dir(event)
 }
 
-export default TodayApp;
+const Today = () => {
+
+    return (
+        <Container icon='today' name='Today' navItem={navItems} onDropHandler={onDropHandler} backgroundColor='background-red' >
+            <h2>Today</h2>
+            <ul>
+                <li> Drag anything here to change the date to today and put it on your list.</li>
+            </ul>
+        </Container>)
+}
+
+export default Today;

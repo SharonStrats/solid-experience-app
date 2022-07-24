@@ -1,0 +1,23 @@
+.header {
+    display: grid;
+    grid-template-columns: min-content auto;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #0E0004;
+    height: 10em;
+    position: fixed;
+    width: 100%;
+}
+.nav {
+    justify-self: end;
+    grid-area: nav;
+    padding-right: 1em;
+}
+.menu {
+    list-style: none;
+}
+.logo {
+    position: absolute;
+    top: -40px;
+}
+

@@ -1,0 +1,9 @@
+.loginButton {
+    background-color: #A6FFA1;
+}
+
+.loginButton:hover,
+.loginButton:active {
+    background: #536252;
+    border-color: #741188;
+}

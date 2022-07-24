@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import {createSolidDataset} from "@inrupt/solid-client";
+// addressDataset: createSolidDataset(),
 const initialState = { addressBooks: [], showAddressBookApp: true, addressBooksShown: [] };
 
 // in action you can have a payload
@@ -35,6 +36,18 @@ const addressSlice = createSlice({
 
         },
         getAllAddressBooks(state, action) {
+            // don't need action, it is called for you.. you only need it
+            // if you have a payload
+            // can mutate state
+         // working on this.....
+
+
+        },
+        setAllAddressBooks(state, action) {
+            // don't need action, it is called for you.. you only need it
+            // if you have a payload
+            // can mutate state
+            // working on this.....
 
         },
         getOneAddressBook(state, action) {
@@ -64,5 +77,5 @@ const addressSlice = createSlice({
     }
 });
 
-export const counterActions = addressSlice.actions;
+export const addressActions = addressSlice.actions;
 export default addressSlice.reducer;

@@ -1,0 +1,14 @@
+@prefix : <#>.
+@prefix Fri: <Friends/index.ttl#>.
+@prefix n: <http://www.w3.org/2006/vcard/ns#>.
+@prefix ind: <addressbooks.ttl#>.
+@prefix Cow: <CoWorkers/index.ttl#>.
+@prefix Fam: <Family/index.ttl#>.
+
+Fri:this a n:AddressBook; n:fn "Friends".
+
+Cow:this a n:AddressBook; n:fn "CoWorkers".
+
+Fam:this a n:AddressBook; n:fn "Family".
+
+ind:this n:includesAddressBook Fri:this, Cow:this, Fam:this.

@@ -24,7 +24,7 @@ import useSWR from "swr";
 import useAddressBook from "../useAddressBookSWR";
 import { getContactAll } from "../../models/contact";
 
-export default function useContacts(types) {
+export default function useContactsSWR(types) {
     const { fetch } = useSession();
     const { data: addressBook, error: addressBookError } = useAddressBook();
 

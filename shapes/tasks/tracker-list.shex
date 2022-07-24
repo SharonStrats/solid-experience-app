@@ -1,0 +1,25 @@
+PREFIX wf: <http://www.w3.org/2005/01/wf/flow#>
+PREFIX acl:   <http://www.w3.org/ns/auth/acl#>
+PREFIX  cal: <http://www.w3.org/2002/12/cal/ical#>
+PREFIX  link: <http://www.w3.org/2007/ont/link#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  owl: <http://www.w3.org/2002/07/owl#>
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX  doap: <http://usefulinc.com/ns/doap#>
+PREFIX  ui: <http://www.w3.org/ns/ui#>
+PREFIX  dc: <http://purl.org/dc/elements/1.1/>
+PREFIX  vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX  : <#>    # Local identifiers use default namespace
+
+# This shape describes some of the information we store for a tracker/taskList.
+# It's intended to represent a single taskList. We use the ID  "#this" to
+# refer to the subject of the tracker.
+
+wf:Tracker {
+    dc:title        xsd:string {1};  // in line with addressBook
+    wf:stateStore   IRI {1} ; // in issue-tracker state.ttl
+    wf:messageStore IRI {1} ; // in issue-tracker chat.ttl
+    acl:owner       IRI +
+
+}

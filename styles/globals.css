@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #F8F7FF;
 }
 
 a {
@@ -13,4 +14,41 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.background-aqua {
+  background: #01C9EA;
+}
+
+.background-aqua-lt {
+  background-color: rgba(1,201,234, 40%);
+}
+.background-purple {
+  background-color: rgb(124,77,255);
+}
+
+.background-purple-lt {
+  background-color: rgba(124,77,255, 90%);
+}
+
+.background-red {
+  background: #DB3A34;
+}
+
+.background-black {
+  background: #0E0004;
+}
+
+.background-white {
+  background: #F8F7FF;
+}
+.background-cream {
+  background: #F3E8EE;
+}
+.background-green {
+  backgound: rgb(166,255,161);
+}
+
+.background-yellow {
+  background: #DCF763;
 }

@@ -1,0 +1,4 @@
+.container {
+    grid-area: tasks;
+    border-left: 2px solid black;
+}
